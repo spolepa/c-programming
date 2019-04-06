@@ -29,7 +29,7 @@ rectangle canonicalize(rectangle r) {
   if(r.width<0){
    r.x-=r.width;
   }
-  else if(r.height<0){
+  if(r.height<0){
     r.y-=r.height;
   }
   return r;
