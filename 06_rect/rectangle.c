@@ -27,10 +27,10 @@ typedef struct rect_angle rectangle;
 rectangle canonicalize(rectangle r) {
   //WRITE THIS FUNCTION
   if(r.width<0){
-   r.x-=r.width;
+   r.x+=r.width;
   }
   if(r.height<0){
-    r.y-=r.height;
+    r.y+=r.height;
   }
   return r;
 }
