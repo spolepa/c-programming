@@ -38,30 +38,82 @@ rectangle canonicalize(rectangle r) {
 }
 rectangle intersection(rectangle r1, rectangle r2) {
   //WRITE THIS FUNCTION
-  rectangle r;
-  r.x = max(r1.x, r2.x);
-  r.y = max(r1.y, r2.y);
+  rectangle r3;
+  r1 = canonicalize(r1);
+  r2 = canonicalize(r2);
+  
+  r3.x = max(r1.x, r2.x);
+  r3.y = max(r1.y, r2.y);
   if((r1.x+r1.width)>(r2.x+r2.width)){
-    r.width = r2.x+r2.width-r1.x;
+    if(r1.x>(r2.x+r2.width)){
+      r3.width = 0;
+      r3.height = 0;
+      return r3;
+    }
+    else if(r1.x>r2.x){
+      r3.width = r2.x+r2.width-r1.x;
+    }
+    else if(r1.x<r2.x){
+      r3.width = r2.width;
+    }
   }
   else if((r1.x+r1.width)<(r2.x+r2.width)){
-    r.width = r1.x+r1.width-r2.x;
+    if(r2.x>(r1.x+r1.width)){
+      r3.width = 0;
+      r3.height = 0;
+      return r3;
+    }
+    else if(r1.x<r2.x){
+      r3.width = r1.x+r1.width-r2.x;
+    }
+    else if(r1.x>=r2.x){
+      r3.width = r1.width;
+    }
   }
   else if((r1.x+r1.width)==(r2.x+r2.width)){
-    r.width = max(r1.x,r2.x)-min(r1.x,r2.x);
+    if(r1.x == r2.x){
+      r3.width = r1.width;
+    }
+    else{
+      r3.width = (max(r1.x,r2.x))-(min(r1.x,r2.x));
+    }
   }
 
   if((r1.y+r1.height)>(r2.y+r2.height)){
-    r.height = r2.y+r2.height-r1.y;
+    if(r1.y>(r2.y+r2.height)){
+      r3.height = 0;
+      r3.width = 0;
+      return r3;
+    }
+    else if(r1.y>r2.y){
+      r3.height = r2.y+r2.height-r1.y;
+    }
+    else if(r1.y<=r2.y){
+      r3.height = r2.height;
+    }
   }
   else if((r1.y+r1.height)<(r2.y+r2.height)){
-    r.height = r1.y+r1.height-r2.y;
+    if(r2.y>(r1.y+r1.height)){
+      r3.height = 0;
+      r3.width = 0;
+      return r3;
+    }
+    else if(r2.y>r1.y){
+      r3.height = r1.y+r1.height-r2.y;
+    }
+    else if(r2.y<=r1.y){
+      r3.height = r1.height;
+    }
   }
   else if((r1.y+r1.height)==(r2.y+r2.height)){
-    r.height = max(r1.y,r2.y)-min(r1.y,r2.y);
+    if(r1.y==r2.y){
+      r3.height = r1.height;
+    }
+    else{
+      r3.height = (max(r1.y,r2.y))-(min(r1.y,r2.y));
+    }
   }
-  
-  return r;
+  return r3;
 }
 
 //You should not need to modify any code below this line
