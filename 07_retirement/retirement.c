@@ -31,7 +31,9 @@ void retirement(int startAge, //in months
 
 int main(){
   
-  retire_info work = {489,1000,4.5};
-  retire_info ret = {384,-4000,1};
-  retirement(327,21345,work,ret);
+  int startAge = 327;
+  double initial = 21345;
+  retire_info working = {489,1000,4.5};
+  retire_info retired = {384,-4000,1};
+  retirement(startAge,initial,working,retired);
 }
