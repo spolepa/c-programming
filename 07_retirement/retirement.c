@@ -36,4 +36,5 @@ int main(){
   retire_info working = {489,1000,4.5};
   retire_info retired = {384,-4000,1};
   retirement(startAge,initial,working,retired);
+  return EXIT_SUCCESS;
 }
